@@ -27,14 +27,14 @@ def get_location(address, key):
         return False, "API request failed"
 
 # Function to get the driving distance and duration between two locations
-def get_distance(origin_location, destination_location, key):
+def get_distance(orig_loc, dest_loc, key):
     base_url = "https://restapi.amap.com/v3/direction/driving"
 
     # Set request parameters
     params = {
         'key': key,
-        'origin': origin_location,
-        'destination': destination_location,
+        'origin': orig_loc,
+        'destination': dest_loc,
         'output': 'JSON'
     }
 
@@ -75,18 +75,18 @@ if origin_location_found:
     index = None
 
     # Iterate through the addresses and calculate distances and durations
-    for i, address in enumerate(address_column):
-        destination_location_found, destination_location = get_location(address, api_key)
-        print(f"Coordinates for address '{address}': {destination_location}")
+    for i, destination_address in enumerate(address_column):
+        destination_location_found, destination_location = get_location(destination_address, api_key)
+        print(f"Coordinates for address '{destination_address}': {destination_location}")
         if destination_location_found:
-            path_found, distance, duration = get_distance(origin_location, destination_location, api_key)
-            print(f"from {origin_address} to {address}, the distance is {distance}m, and it will take {duration}s.")
-            if  shortest_distance is None or distance < shortest_distance:
-                shortest_distance = distance
-                shortest_duration = duration
+            path_found, drive_distance, drive_duration = get_distance(origin_location, destination_location, api_key)
+            print(f"from {origin_address} to {destination_address}, the distance is {drive_distance}m, and it will take {drive_duration}s.")
+            if  shortest_distance is None or drive_distance < shortest_distance:
+                shortest_distance = drive_distance
+                shortest_duration = drive_duration
                 index = i
         else:
-            print(f"The destination address {address} is not found from the Amap API.")
+            print(f"The destination address {destination_address} is not found from the Amap API.")
 
     if index is not None:
         print(f"The nearest location is {address_column.iloc[index]}."
