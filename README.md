@@ -10,7 +10,7 @@ For example:
 - **Company health check-ups**: Your company may offer annual health check-ups at several partner clinics, and you want to select the one closest to your home.
 - **Dental cleaning appointments**: A well-known dental chain has many branches, and you want to find the branch nearest to your location for your dental cleaning appointment.
 
-### Why Amap (高德)?
+## Why Amap (高德)?
 
 Amap (高德地图) is widely used in mainland China for navigation and location services. It is known for its highly accurate geolocation and comprehensive coverage across the country. When trying to find the nearest location within mainland China, using Amap's API provides more precise and reliable results compared to other options. This is why Amap's API is ideal for obtaining accurate driving distances and geocoding information in China.
 
