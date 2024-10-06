@@ -10,7 +10,7 @@ For example:
 - **Company health check-ups**: Your company may offer annual health check-ups at several partner clinics, and you want to select the one closest to your home.
 - **Dental cleaning appointments**: A well-known dental chain has many branches, and you want to find the branch nearest to your location for your dental cleaning appointment.
 
-### Why Amap (Gaode)?
+### Why Amap (高德)?
 
 Amap (高德地图) is widely used in mainland China for navigation and location services. It is known for its highly accurate geolocation and comprehensive coverage across the country. When trying to find the nearest location within mainland China, using Amap's API provides more precise and reliable results compared to other options. This is why Amap's API is ideal for obtaining accurate driving distances and geocoding information in China.
 
@@ -25,45 +25,55 @@ Amap (高德地图) is widely used in mainland China for navigation and location
 
 ### Prerequisites
 
-- Python 3.x
-- Required libraries: `pandas`, `requests`
-- A valid **Amap API key**
+- **Python 3.11.3**: This script requires Python version 3.11.3. I recommend using pyenv to manage Python versions more easily. This tool allows you to switch between different Python versions for different projects and is very convenient for managing multiple Python installations.
 
-You can install the required libraries using pip:
+  If you're unfamiliar with how to use pyenv, I suggest searching online or checking the official documentation for guidance. Due to space constraints, I won’t go into detail here, but a quick Google search for "how to install Python using pyenv" should give you plenty of useful resources.
 
-```bash
-pip install pandas requests
-```
-### API Key Setup
-To use this script, you will need to apply for an Amap API key. You can find your API key at the following link after registration:
+- **Amap API key**: You will need to register and apply for an API key [here](https://console.amap.com/dev/key/app).
+- **Excel file**: The Excel file (100712233.xlsx) should contain a list of addresses under an "address" column and other optional columns for additional information (e.g., "地域" and "名称").
 
-https://console.amap.com/dev/key/app
+### Setting Up the Environment (on macOS)
 
-When running the script, it will prompt you to enter your API key.
-
-```bash
-# In the terminal
-Please enter your Amap API key: [Your API Key]
-```
-
-### Input Format
-The input Excel file should have the following columns:
-- address: The list of addresses to compare.
-- Other columns (e.g., 地域, 名称) can be included for additional information but are not required for the distance calculation.
-
-The Excel file 100712233.xlsx used in the source code was downloaded from the website of Consulate-General of Japan in Shanghai.
-
-### Running the Script
-1. Ensure your Excel file contains a list of addresses under the address column, along with any other relevant details.
-2. Run the script in your terminal:
+1. **Clone the repository**: In the terminal, first use `cd` to navigate to the directory where you want to store the project. Then run the following command to clone the repository:
     ```bash
-    # In the terminal
+    git clone https://github.com/Chen-Isaac/Nearest-Address-Locator.git
+    ```
+2. **Change into the project directory**: After cloning, navigate into the project folder.
+    ```bash
+    cd Nearest-Address-Locator
+    ```
+3. **Create and activate a virtual environment**: Set up a virtual environment to manage dependencies.   
+    ```bash
+    python -m venv .venv
+    source .venv/bin/activate
+    ```
+4. **Install required libraries**: Once the virtual environment is activated, install the required dependencies using the provided requirements.txt file:
+    ```bash
+    pip install -r requirements.txt
+    ```
+   
+### Running the Script
+
+1. After activating the virtual environment and installing the dependencies, run the Python script:
+    ```bash
     python nearest_address_locator.py
     ```
-3. Input your starting location when prompted, and the script will calculate the nearest destination.
+2. The script will prompt you to enter:
+   - **Starting location**: Enter the name of your starting location.
+   - **Amap API key**: The script will ask for the API key you obtained from Amap. Input the key when prompted.
+
+3. The script will process the Excel file, calculate the driving distances and durations between the starting location and all addresses listed, and return the nearest address based on distance.
 
 ### Amap API Limits
-Amap’s basic LBS services, including driving route planning and geocoding, allow up to 5,000 free requests per day. This should be more than enough for personal daily use.
+
+- **API Limitations**: Amap provides 5,000 free requests per day for their basic services, including geocoding and route calculation. This should be sufficient for personal use, but consider reviewing their [pricing and quota limits](https://console.amap.com/) if you need more requests.
+
+### Deactivating the Virtual Environment
+
+- When you're done working in the virtual environment, deactivate it by running the following command:
+    ```bash
+    deactivate
+    ```
 
 ## References
 To learn more about the API used in this script, you can refer to the official Amap API documentation:
