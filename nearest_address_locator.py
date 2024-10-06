@@ -1,5 +1,6 @@
 import pandas as pd
 import requests
+from getpass import getpass
 
 # Function to get location coordinates from the Amap API
 def get_location(address, key):
@@ -60,7 +61,7 @@ origin_address = input("Please enter your starting location: ")
 
 # Ask the user to input their API key
 print("You can find the API key you applied for at https://console.amap.com/dev/key/app.")
-api_key = input("Please enter your Amap API key: ")
+api_key = getpass("Please enter your Amap API key: ")
 
 # Get the location for the origin address
 origin_location_found, origin_location = get_location(origin_address, api_key)
