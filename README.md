@@ -64,6 +64,10 @@ Amap (高德地图) is widely used in mainland China for navigation and location
 
 3. The script will process the Excel file, calculate the driving distances and durations between the starting location and all addresses listed, and return the nearest address based on distance.
 
+**A general demonstration of the script's running process is shown in the GIF below:**
+
+![Running Process GIF](./images/path_to_your_nearest_destination.gif)
+
 ### Amap API Limits
 
 - **API Limitations**: Amap provides 5,000 free requests per day for their basic services, including geocoding and route calculation. This should be sufficient for personal use, but consider reviewing their [pricing and quota limits](https://console.amap.com/) if you need more requests.
